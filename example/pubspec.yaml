@@ -38,6 +38,7 @@ dependencies:
   build_runner: ^2.3.2
   gql_generator:
     path: "../"
+  code_builder: ^4.3.0
 
 dev_dependencies:
   flutter_test:
