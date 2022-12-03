@@ -1,13 +1,13 @@
-targets:
-  gql_generator:gql_generator:
-    builders:
-      gql_generator|gqlGenerator:
-        enabled: True
+# targets:
+#   gql_generator:gql_generator:
+#     builders:
+#       gql_generator|gqlGenerator:
+#         enabled: True
 
-builders:
-  gqlGenerator:
-    import: "package:gql_generator/gql_generator.dart"
-    builder_factories: ["gqlGenerator"]
-    build_extensions: {}
-    auto_apply: root_package
-    build_to: source
+# builders:
+#   gqlGenerator:
+#     import: "package:gql_generator/gql_generator.dart"
+#     builder_factories: ["gqlGenerator"]
+#     build_extensions: {}
+#     auto_apply: root_package
+#     build_to: source
