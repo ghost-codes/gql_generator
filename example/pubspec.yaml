@@ -39,6 +39,7 @@ dependencies:
   gql_generator:
     path: "../"
   code_builder: ^4.3.0
+  json_serializable: ^6.2.0
 
 dev_dependencies:
   flutter_test:
