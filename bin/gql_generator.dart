@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:gql_generator/src/fieldProcessor.dart';
+import 'package:gql_generator/src/gqlType.dart';
 import 'package:gql_generator/src/util.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
@@ -29,14 +31,14 @@ Future<void> processModels(Map<String, dynamic> schema) async {
         element["name"] != "Mutation"),
   );
 
-  final files = models.map((e) {
+  final files = models.map((e) async {
     if ((e["name"] as String).startsWith("__")) return;
 
     Library library = Library((builder) {
       final fields = ((e["fields"] ?? []) as List)
           .map(
             (element) {
-              final x = FieldBuilder(element["name"], Type.fromJson(element["type"]),
+              final x = FieldProcessor(element["name"], GqlType.fromJson(element["type"]),
                   (name) => builder.directives.add(Directive.import("$name.dart")));
               if ((element["name"] as String).startsWith("__")) return null;
               return x.toField();
@@ -84,98 +86,10 @@ Future<void> processModels(Map<String, dynamic> schema) async {
 
       builder.directives.add(Directive.part("${e["name"]}.g.dart"));
     });
-    // final c = Class((b) => b
-    //   ..name = e["name"]
-    //   ..fields =
-    //       ListBuilder((e["fields"] ?? []).map((element) => Field((field) {
-    //             field.name = element["name"];
-    //             // if (element) {
-    //             final type = element["type"];
-    //             if (type["kind"] == "SCALAR") {
-    //               field.type = Reference("${scalarMap[type["name"]]}?");
-    //               // }
-    //             } else if (type["kind"] == "NON_NULL" &&
-    //                 type["ofType"]["kind"] == "SCALAR") {
-    //               field.type = Reference(scalarMap[type["ofType"]["name"]]);
-    //             }
-    //           })))
-    //   ..constructors = ListBuilder([
-    //     Constructor((builder) => builder
-    //       ..factory = true
-    //       ..name = 'fromJson'
-    //       ..lambda = true
-    //       ..requiredParameters =
-    //           ListBuilder([Parameter((builder) => builder.name = 'json')])
-    //       ..body = Code('_\$${b.name}ToJson(json)'))
-    //   ]));
 
     final emitter = DartEmitter();
     final File file = File("${graqhqlDir.path}/${e["name"]}.dart");
+    print('${library.accept(emitter)}');
     file.writeAsStringSync(DartFormatter().format('${library.accept(emitter)}'));
   }).toList();
-}
-
-class FieldBuilder {
-  final String name;
-  final Type type;
-  final Function(String name) import;
-
-  String listStringConst(String t) {
-    return "List<$t>";
-  }
-
-  FieldBuilder(this.name, this.type, this.import);
-
-  Reference scalarReferenceBuilder(String type, {bool isNull = false, bool isList = false}) {
-    final ref = "${scalarMap[type]}${isNull ? "?" : ""}";
-    return Reference(isList ? ref : listStringConst(ref));
-  }
-
-  Reference objectReferenceBuilder(String type, {bool isNull = false, bool isList = false}) {
-    final ref = "$type${isNull ? "?" : ""}";
-    return Reference(isList ? ref : listStringConst(ref));
-  }
-
-  Reference? constructType(Type type, {bool isNull = false}) {
-    switch (type.kind) {
-      case "NON_NULL":
-        return constructType(type.ofType!, isNull: true);
-      case "SCALAR":
-        return scalarReferenceBuilder(type.name!, isNull: isNull);
-      case "OBJECT":
-        if (type.name == "__Directive") return null;
-        import(type.name!);
-        return objectReferenceBuilder(type.name!, isNull: isNull);
-      case "LIST":
-        if (isNull) {
-          final result = constructType(type.ofType!, isNull: false);
-          return Reference(result == null ? "dynamice" : "${result.symbol}?");
-        }
-        return constructType(type.ofType!, isNull: false);
-
-      default:
-        return null;
-    }
-  }
-
-  Field toField() {
-    return Field((field) {
-      field.name = name;
-      field.type = constructType(type);
-    });
-  }
-}
-
-class Type {
-  String kind;
-  String? name;
-
-  Type? ofType;
-
-  Type(this.kind, this.name, this.ofType);
-
-  factory Type.fromJson(Map<String, dynamic> json) {
-    return Type(json["kind"] ?? "", json["name"],
-        json["ofType"] != null ? Type.fromJson(json["ofType"]) : null);
-  }
 }
