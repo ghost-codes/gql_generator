@@ -11,11 +11,11 @@ class TopTour {
     this.total_bookings,
   );
 
-  List<String?> name;
+  String name;
 
-  List<int?> total_impressions;
+  int total_impressions;
 
-  List<int?> total_bookings;
+  int total_bookings;
 
   Map<String, dynamic> toJson() => _$TopTourToJson(this);
 }

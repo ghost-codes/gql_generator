@@ -16,44 +16,44 @@ class Tour {
     this.description,
     this.destination,
     this.state,
-    this.itinerary,
     this.agency,
     this.is_featured,
-    this.feature_start_date,
-    this.feature_end_date, {
     this.images,
-    this.bookings,
+    this.bookings, {
+    this.itinerary,
+    this.feature_start_date,
+    this.feature_end_date,
   });
 
-  List<String?> name;
+  String name;
 
-  List<String?> slug;
+  String slug;
 
-  List<DateTime?> start_date;
+  DateTime start_date;
 
-  List<DateTime?> end_date;
+  DateTime end_date;
 
-  List<double?> rate;
+  double rate;
 
-  List<String?> description;
+  String description;
 
-  List<String?> destination;
+  String destination;
 
-  List<String?> state;
+  String state;
 
-  List<Map<String, dynamic>> itinerary;
+  Map<String, dynamic>? itinerary;
 
-  List<Agency?> agency;
+  Agency agency;
 
-  List<bool?> is_featured;
+  bool is_featured;
 
-  List<DateTime> feature_start_date;
+  DateTime? feature_start_date;
 
-  List<DateTime> feature_end_date;
+  DateTime? feature_end_date;
 
-  List<String?>? images;
+  List<String> images;
 
-  List<Tour>? bookings;
+  List<Tour> bookings;
 
   Map<String, dynamic> toJson() => _$TourToJson(this);
 }

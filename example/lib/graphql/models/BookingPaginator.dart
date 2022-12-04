@@ -8,13 +8,13 @@ class BookingPaginator {
   factory BookingPaginator.fromJson(json) => _$BookingPaginatorFromJson(json);
 
   BookingPaginator(
-    this.paginatorInfo, {
+    this.paginatorInfo,
     this.data,
-  });
+  );
 
-  List<PaginatorInfo?> paginatorInfo;
+  PaginatorInfo paginatorInfo;
 
-  List<Booking?>? data;
+  List<Booking> data;
 
   Map<String, dynamic> toJson() => _$BookingPaginatorToJson(this);
 }

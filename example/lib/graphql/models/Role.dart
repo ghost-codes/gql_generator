@@ -7,13 +7,13 @@ class Role {
   factory Role.fromJson(json) => _$RoleFromJson(json);
 
   Role(
-    this.name, {
+    this.name,
     this.permissions,
-  });
+  );
 
-  List<String?> name;
+  String name;
 
-  List<Permission?>? permissions;
+  List<Permission> permissions;
 
   Map<String, dynamic> toJson() => _$RoleToJson(this);
 }

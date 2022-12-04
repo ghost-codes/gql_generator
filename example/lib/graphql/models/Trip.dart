@@ -9,29 +9,29 @@ class Trip {
   Trip(
     this.name,
     this.slug,
+    this.invitees, {
     this.description,
-    this.location,
+    this.destination,
     this.itinerary,
     this.start_date,
-    this.end_date, {
-    this.invitees,
+    this.end_date,
   });
 
-  List<String?> name;
+  String name;
 
-  List<String?> slug;
+  String slug;
 
-  List<String> description;
+  String? description;
 
-  List<String> location;
+  String? destination;
 
-  List<Map<String, dynamic>> itinerary;
+  Map<String, dynamic>? itinerary;
 
-  List<DateTime> start_date;
+  DateTime? start_date;
 
-  List<DateTime> end_date;
+  DateTime? end_date;
 
-  List<TripInvitee>? invitees;
+  List<TripInvitee> invitees;
 
   Map<String, dynamic> toJson() => _$TripToJson(this);
 }

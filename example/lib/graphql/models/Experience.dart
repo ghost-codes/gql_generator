@@ -10,9 +10,9 @@ class Experience {
     this.name,
   );
 
-  List<String?> id;
+  String id;
 
-  List<String?> name;
+  String name;
 
   Map<String, dynamic> toJson() => _$ExperienceToJson(this);
 }

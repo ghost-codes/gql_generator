@@ -10,28 +10,28 @@ class Analytics {
     this.wallet_balance,
     this.total_earnings,
     this.total_withdrawn,
+    this.top_tours,
     this.total_tours_count,
     this.completed_tours_count,
-    this.upcoming_tours_count,
-    this.query_range, {
-    this.top_tours,
+    this.upcoming_tours_count, {
+    this.query_range,
   });
 
-  List<int?> wallet_balance;
+  int wallet_balance;
 
-  List<int?> total_earnings;
+  int total_earnings;
 
-  List<int?> total_withdrawn;
+  int total_withdrawn;
 
-  List<TopTour>? top_tours;
+  List<TopTour> top_tours;
 
-  List<int?> total_tours_count;
+  int total_tours_count;
 
-  List<int?> completed_tours_count;
+  int completed_tours_count;
 
-  List<int?> upcoming_tours_count;
+  int upcoming_tours_count;
 
-  List<String> query_range;
+  String? query_range;
 
   Map<String, dynamic> toJson() => _$AnalyticsToJson(this);
 }

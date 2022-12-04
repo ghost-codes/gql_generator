@@ -11,9 +11,10 @@ class User {
   factory User.fromJson(json) => _$UserFromJson(json);
 
   User(
+    this.email,
+    this.is_onboarding_complete, {
     this.first_name,
     this.last_name,
-    this.email,
     this.username,
     this.country,
     this.agencies,
@@ -24,36 +25,35 @@ class User {
     this.email_verified_at,
     this.created_at,
     this.updated_at,
-    this.is_onboarding_complete,
-  );
+  });
 
-  List<String> first_name;
+  String? first_name;
 
-  List<String> last_name;
+  String? last_name;
 
-  List<String?> email;
+  String email;
 
-  List<String> username;
+  String? username;
 
-  List<Country> country;
+  Country? country;
 
-  List<Agency> agencies;
+  List<Agency>? agencies;
 
-  List<AgencyUserPivot> pivot;
+  AgencyUserPivot? pivot;
 
-  List<TravelerType> traveler_type;
+  TravelerType? traveler_type;
 
-  List<Experience> experiences;
+  List<Experience>? experiences;
 
-  List<String> avatar_url;
+  String? avatar_url;
 
-  List<DateTime> email_verified_at;
+  DateTime? email_verified_at;
 
-  List<DateTime> created_at;
+  DateTime? created_at;
 
-  List<DateTime> updated_at;
+  DateTime? updated_at;
 
-  List<bool?> is_onboarding_complete;
+  bool is_onboarding_complete;
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }
