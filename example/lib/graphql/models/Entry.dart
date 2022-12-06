@@ -12,11 +12,11 @@ class Entry {
     this.is_social,
   );
 
-  List<User?> user;
+  User user;
 
-  List<String?> token;
+  String token;
 
-  List<bool?> is_social;
+  bool is_social;
 
   Map<String, dynamic> toJson() => _$EntryToJson(this);
 }

@@ -11,26 +11,26 @@ class Booking {
   Booking(
     this.payee,
     this.tour,
-    this.paid_amount,
     this.persons_count,
     this.payment_method,
     this.created_at,
-    this.updated_at,
-  );
+    this.updated_at, {
+    this.paid_amount,
+  });
 
-  List<User?> payee;
+  User payee;
 
-  List<Tour?> tour;
+  Tour tour;
 
-  List<double> paid_amount;
+  double? paid_amount;
 
-  List<int?> persons_count;
+  int persons_count;
 
-  List<PaymentMethod?> payment_method;
+  PaymentMethod payment_method;
 
-  List<DateTime?> created_at;
+  DateTime created_at;
 
-  List<DateTime?> updated_at;
+  DateTime updated_at;
 
   Map<String, dynamic> toJson() => _$BookingToJson(this);
 }

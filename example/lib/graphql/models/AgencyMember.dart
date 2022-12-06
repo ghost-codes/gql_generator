@@ -11,9 +11,9 @@ class AgencyMember {
   factory AgencyMember.fromJson(json) => _$AgencyMemberFromJson(json);
 
   AgencyMember(
+    this.email, {
     this.first_name,
     this.last_name,
-    this.email,
     this.username,
     this.roles,
     this.country,
@@ -24,33 +24,33 @@ class AgencyMember {
     this.email_verified_at,
     this.created_at,
     this.updated_at,
-  );
+  });
 
-  List<String> first_name;
+  String? first_name;
 
-  List<String> last_name;
+  String? last_name;
 
-  List<String?> email;
+  String email;
 
-  List<String> username;
+  String? username;
 
-  List<Role> roles;
+  List<Role>? roles;
 
-  List<Country> country;
+  Country? country;
 
-  List<AgencyUserPivot> pivot;
+  AgencyUserPivot? pivot;
 
-  List<TravelerType> traveler_type;
+  TravelerType? traveler_type;
 
-  List<Experience> experiences;
+  List<Experience>? experiences;
 
-  List<String> avatar_url;
+  String? avatar_url;
 
-  List<DateTime> email_verified_at;
+  DateTime? email_verified_at;
 
-  List<DateTime> created_at;
+  DateTime? created_at;
 
-  List<DateTime> updated_at;
+  DateTime? updated_at;
 
   Map<String, dynamic> toJson() => _$AgencyMemberToJson(this);
 }

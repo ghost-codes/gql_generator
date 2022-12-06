@@ -1,6 +1,5 @@
 import 'Country.dart';
 import 'TripInviteePivot.dart';
-import 'Tour.dart';
 import 'TravelerType.dart';
 import 'Experience.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -11,9 +10,9 @@ class TripInvitee {
   factory TripInvitee.fromJson(json) => _$TripInviteeFromJson(json);
 
   TripInvitee(
+    this.email, {
     this.first_name,
     this.last_name,
-    this.email,
     this.username,
     this.country,
     this.pivot,
@@ -22,35 +21,32 @@ class TripInvitee {
     this.avatar_url,
     this.email_verified_at,
     this.created_at,
-    this.updated_at, {
-    this.bookings,
+    this.updated_at,
   });
 
-  List<String> first_name;
+  String? first_name;
 
-  List<String> last_name;
+  String? last_name;
 
-  List<String?> email;
+  String email;
 
-  List<String> username;
+  String? username;
 
-  List<Country> country;
+  Country? country;
 
-  List<TripInviteePivot> pivot;
+  TripInviteePivot? pivot;
 
-  List<Tour>? bookings;
+  TravelerType? traveler_type;
 
-  List<TravelerType> traveler_type;
+  List<Experience>? experiences;
 
-  List<Experience> experiences;
+  String? avatar_url;
 
-  List<String> avatar_url;
+  DateTime? email_verified_at;
 
-  List<DateTime> email_verified_at;
+  DateTime? created_at;
 
-  List<DateTime> created_at;
-
-  List<DateTime> updated_at;
+  DateTime? updated_at;
 
   Map<String, dynamic> toJson() => _$TripInviteeToJson(this);
 }

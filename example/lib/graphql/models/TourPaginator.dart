@@ -8,13 +8,13 @@ class TourPaginator {
   factory TourPaginator.fromJson(json) => _$TourPaginatorFromJson(json);
 
   TourPaginator(
-    this.paginatorInfo, {
+    this.paginatorInfo,
     this.data,
-  });
+  );
 
-  List<PaginatorInfo?> paginatorInfo;
+  PaginatorInfo paginatorInfo;
 
-  List<Tour?>? data;
+  List<Tour> data;
 
   Map<String, dynamic> toJson() => _$TourPaginatorToJson(this);
 }

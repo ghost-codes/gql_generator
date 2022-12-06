@@ -10,9 +10,9 @@ class TravelerType {
     this.name,
   );
 
-  List<String?> id;
+  String id;
 
-  List<String?> name;
+  String name;
 
   Map<String, dynamic> toJson() => _$TravelerTypeToJson(this);
 }

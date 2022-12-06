@@ -10,9 +10,9 @@ class AgencyCategory {
     this.name,
   );
 
-  List<int?> id;
+  int id;
 
-  List<String?> name;
+  String name;
 
   Map<String, dynamic> toJson() => _$AgencyCategoryToJson(this);
 }

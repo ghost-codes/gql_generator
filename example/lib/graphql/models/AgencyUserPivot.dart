@@ -5,9 +5,9 @@ part 'AgencyUserPivot.g.dart';
 class AgencyUserPivot {
   factory AgencyUserPivot.fromJson(json) => _$AgencyUserPivotFromJson(json);
 
-  AgencyUserPivot(this.is_owner);
+  AgencyUserPivot({this.is_owner});
 
-  List<bool> is_owner;
+  bool? is_owner;
 
   Map<String, dynamic> toJson() => _$AgencyUserPivotToJson(this);
 }

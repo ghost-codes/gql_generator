@@ -9,23 +9,23 @@ class SimplePaginatorInfo {
   SimplePaginatorInfo(
     this.count,
     this.currentPage,
+    this.perPage,
+    this.hasMorePages, {
     this.firstItem,
     this.lastItem,
-    this.perPage,
-    this.hasMorePages,
-  );
+  });
 
-  List<int?> count;
+  int count;
 
-  List<int?> currentPage;
+  int currentPage;
 
-  List<int> firstItem;
+  int? firstItem;
 
-  List<int> lastItem;
+  int? lastItem;
 
-  List<int?> perPage;
+  int perPage;
 
-  List<bool?> hasMorePages;
+  bool hasMorePages;
 
   Map<String, dynamic> toJson() => _$SimplePaginatorInfoToJson(this);
 }

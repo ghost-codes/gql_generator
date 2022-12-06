@@ -7,7 +7,7 @@ class Permission {
 
   Permission(this.name);
 
-  List<String?> name;
+  String name;
 
   Map<String, dynamic> toJson() => _$PermissionToJson(this);
 }

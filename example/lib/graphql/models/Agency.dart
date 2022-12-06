@@ -10,34 +10,34 @@ class Agency {
   factory Agency.fromJson(json) => _$AgencyFromJson(json);
 
   Agency(
+    this.email,
+    this.state,
+    this.members, {
     this.name,
     this.username,
     this.avatar_url,
-    this.email,
-    this.state,
     this.pivot,
     this.country,
-    this.tour_categories, {
-    this.members,
+    this.tour_categories,
   });
 
-  List<String> name;
+  String? name;
 
-  List<String> username;
+  String? username;
 
-  List<String> avatar_url;
+  String? avatar_url;
 
-  List<String?> email;
+  String email;
 
-  List<String?> state;
+  String state;
 
-  List<AgencyMember?>? members;
+  List<AgencyMember> members;
 
-  List<AgencyUserPivot> pivot;
+  AgencyUserPivot? pivot;
 
-  List<Country> country;
+  Country? country;
 
-  List<AgencyCategory> tour_categories;
+  List<AgencyCategory>? tour_categories;
 
   Map<String, dynamic> toJson() => _$AgencyToJson(this);
 }

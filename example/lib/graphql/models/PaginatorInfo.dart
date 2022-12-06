@@ -8,29 +8,29 @@ class PaginatorInfo {
   PaginatorInfo(
     this.count,
     this.currentPage,
-    this.firstItem,
     this.hasMorePages,
-    this.lastItem,
     this.lastPage,
     this.perPage,
-    this.total,
-  );
+    this.total, {
+    this.firstItem,
+    this.lastItem,
+  });
 
-  List<int?> count;
+  int count;
 
-  List<int?> currentPage;
+  int currentPage;
 
-  List<int> firstItem;
+  int? firstItem;
 
-  List<bool?> hasMorePages;
+  bool hasMorePages;
 
-  List<int> lastItem;
+  int? lastItem;
 
-  List<int?> lastPage;
+  int lastPage;
 
-  List<int?> perPage;
+  int perPage;
 
-  List<int?> total;
+  int total;
 
   Map<String, dynamic> toJson() => _$PaginatorInfoToJson(this);
 }

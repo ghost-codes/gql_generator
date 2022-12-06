@@ -8,29 +8,29 @@ class PageInfo {
   PageInfo(
     this.hasNextPage,
     this.hasPreviousPage,
-    this.startCursor,
-    this.endCursor,
     this.total,
     this.count,
     this.currentPage,
-    this.lastPage,
-  );
+    this.lastPage, {
+    this.startCursor,
+    this.endCursor,
+  });
 
-  List<bool?> hasNextPage;
+  bool hasNextPage;
 
-  List<bool?> hasPreviousPage;
+  bool hasPreviousPage;
 
-  List<String> startCursor;
+  String? startCursor;
 
-  List<String> endCursor;
+  String? endCursor;
 
-  List<int?> total;
+  int total;
 
-  List<int?> count;
+  int count;
 
-  List<int?> currentPage;
+  int currentPage;
 
-  List<int?> lastPage;
+  int lastPage;
 
   Map<String, dynamic> toJson() => _$PageInfoToJson(this);
 }
